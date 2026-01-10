@@ -49,47 +49,54 @@
     </details>
   </section>
 
-
-
+  <!-- TEXT INPUTS-->
+  <!-- NOTE IDs for JAVA-->
   <section id="consent-form">
      <h2>Participant Details</h2>
+<form id="consent-form">
 
+<label>Participant Name* 
+<input type="text" id="participant-name" name="participant-name" required>
+</label>
 
-<label>Participant Name* </label>
-<input type="text" id="participant-name" name="participant-name" autocomplete="name" required>
-<br></br>
-
-<label>Email* </label>
+<label>Email*
 <input type="email" id="email" name="email" required>
+</label>
 
-<br></br>
+<label>Phone Number
+<input type="tel" id="phone" name="phone-number">
+ </label>
 
-<label>Phone Number </label>
-<input type="tel" id="phone-number" name="phone-number">
+<label>Special Instructions 
+<textarea id="special" name="special" rows="4" cols="50"></textarea>
+</label>
 
-<br></br>
-
-<label>Special Instructions </label>
-<textarea id="special-instructions" name="special-instructions" rows="4" cols="50"></textarea>
+ <!-- CHECK BOXES-->
 
 <h3>Usage Consent</h3>
-<label>Social Media </label>
 
-<br></br>
+<label class="check">
+<input type="checkbox" value="Social Media">Social Media
+</label>
+<label class="check">
+<input type="checkbox" value="Print Materials">Print Materials
+</label>
+<label class="check">
+<input type="checkbox" value="Publications">Publications
+</label>
+<label class="check">
+<input type="checkbox" value="Fundraising">Fundraising
+</label>
 
-<label>Print Materials </label>
 
-<br></br>
-
-<label>Publications  </label>
-<br></br>
-
-<label>Fundraising </label>
 
 <h3>Digital Signature</h3>
 
 
+<button type="submit">Submit Consent Form</button>
 
+
+</form>
 
 
 
