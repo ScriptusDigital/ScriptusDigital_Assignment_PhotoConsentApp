@@ -12,11 +12,10 @@ document.getElementById('consent-form').addEventListener('submit', function(even
     console.log('Phone Number:', phone);
     console.log('Special Instructions:', specialInstructions);
 
-});
-
-const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-checkboxes.forEach(checkbox => {
-    checkbox.addEventListener('change', function() {
-        console.log(this.value + ' consent:', this.checked);
+    const usageConsents = [];
+    document.querySelectorAll('.BoxInput:checked').forEach(function(checkbox) {
+        usageConsents.push(checkbox.value);
     });
+    console.log('Usage Consents:', usageConsents.join(', '));
+
 });
