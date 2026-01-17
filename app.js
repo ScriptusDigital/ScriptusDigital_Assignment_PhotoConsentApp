@@ -41,8 +41,11 @@ setStatus('Form submitted successfully!', false);
 
 });
 
+   //-----Form Reset-----//
+
 document.getElementById('consent-form').addEventListener('reset', function() {
     setStatus('', false);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 });
 
 
@@ -55,22 +58,50 @@ document.getElementById('consent-form').addEventListener('reset', function() {
         specialCount.textContent = count + ' characters';
     });
 
+ //-----SignaturePad-----//
+      // Based on tutorial from https://blog.logrocket.com/implementing-signature-pad-javascript/---///
+       const canvas = document.getElementById('SignaturePad');
+       const ctx = canvas.getContext('2d');
+       let drawing = false;
+       let tool = 'pen';
 
-        //-----SignaturePad-----//
-        const canvas = document.getElementById('SignaturePad');
-        const ctx = canvas.getContext('2d');
-        let drawing = false;
-        canvas.addEventListener('mousedown', () => { drawing = true; });
-        canvas.addEventListener('mouseup', () => { drawing = false; ctx.beginPath(); });
-        canvas.addEventListener('mouseout', () => { drawing = false; ctx.beginPath(); });
-        canvas.addEventListener('mousemove', draw);
+       ctx.lineCap = 'round';
+       ctx.lineWidth = 2;
 
-        function draw(event) {
-            if (!drawing) return;
-           const rect = canvas.getBoundingClientRect();
-           ctx.fillStyle = '#000000';
+       function startDrawing(event) {
+           drawing = true;
            ctx.beginPath();
-           ctx.arc(event.clientX - rect.left, event.clientY - rect.top, 3, 2, Math.PI * 2);
-           ctx.fill();
-        }
+              ctx.moveTo(event.offsetX, event.offsetY); 
+       }
+              function draw(event) {
+           if (!drawing) return; 
 
+
+               ctx.strokeStyle = tool === 'pen' ? 'black' : 'white';
+               ctx.lineWidth = tool === 'pen' ? 2 : 5;
+               ctx.lineTo(event.offsetX, event.offsetY);
+               ctx.stroke();
+
+               ctx.beginPath();
+               ctx.moveTo(event.offsetX, event.offsetY);
+           }
+        
+           function stopDrawing() {
+           drawing = false;
+           ctx.beginPath();
+       }
+
+       canvas.addEventListener('mousedown', startDrawing);
+       canvas.addEventListener('mousemove', draw);
+       canvas.addEventListener('mouseup', stopDrawing);
+       canvas.addEventListener('mouseout', stopDrawing);
+
+       canvas.addEventListener('touchstart', startDrawing);
+       canvas.addEventListener('touchmove', draw);
+       canvas.addEventListener('touchend', stopDrawing);
+              canvas.addEventListener('touchcancel', stopDrawing);
+
+            
+              document.getElementById('stroke-style').addEventListener('change', function(event) {
+       tool = event.target.value;
+    ctx.lineWidth = tool === 'pen' ? 2 : 5;    });
