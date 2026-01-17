@@ -54,3 +54,23 @@ document.getElementById('consent-form').addEventListener('reset', function() {
         const count = this.value.length;
         specialCount.textContent = count + ' characters';
     });
+
+
+        //-----SignaturePad-----//
+        const canvas = document.getElementById('SignaturePad');
+        const ctx = canvas.getContext('2d');
+        let drawing = false;
+        canvas.addEventListener('mousedown', () => { drawing = true; });
+        canvas.addEventListener('mouseup', () => { drawing = false; ctx.beginPath(); });
+        canvas.addEventListener('mouseout', () => { drawing = false; ctx.beginPath(); });
+        canvas.addEventListener('mousemove', draw);
+
+        function draw(event) {
+            if (!drawing) return;
+           const rect = canvas.getBoundingClientRect();
+           ctx.fillStyle = '#000000';
+           ctx.beginPath();
+           ctx.arc(event.clientX - rect.left, event.clientY - rect.top, 3, 2, Math.PI * 2);
+           ctx.fill();
+        }
+

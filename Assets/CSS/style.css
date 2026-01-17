@@ -131,6 +131,7 @@ h3 {
     display: flex;
     gap: 10px  ;
     margin-top: 15px;
+    margin-top: 30px;
 }
 
 button {
@@ -180,10 +181,15 @@ button[type="reset"]:active {
 
 
 /*Digital Signature Box */
-#signature-pad {
-    border: 2px dashed #ccc;
-    border-radius: 6px;
-    background-color: #f9f9f9;
-    cursor: crosshair;
+/* Canvas */
+#SignaturePad {
+display: block;
+width: 100% ;   
+max-width: 400px;
+height: 150px;
+border: 1px solid #ccc;
+border-radius: 6px;
+background: #f9f9f9;
+margin-top: 10px;
 }
 
