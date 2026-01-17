@@ -44,3 +44,13 @@ setStatus('Form submitted successfully!', false);
 document.getElementById('consent-form').addEventListener('reset', function() {
     setStatus('', false);
 });
+
+
+    //-----Character Counter in Special Instructions-----//
+    const specialCount = document.getElementById('specialcount');
+    const specialInstructionsInput = document.getElementById('special');
+
+    specialInstructionsInput.addEventListener('input', function() {
+        const count = this.value.length;
+        specialCount.textContent = count + ' characters';
+    });
