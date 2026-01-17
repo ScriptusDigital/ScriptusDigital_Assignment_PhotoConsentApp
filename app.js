@@ -56,6 +56,7 @@ console.log('Has Signature:', hasSignature);
 document.getElementById('consent-form').addEventListener('reset', function() {
     setStatus('', false);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    hasSignature = false;
 });
 
 
