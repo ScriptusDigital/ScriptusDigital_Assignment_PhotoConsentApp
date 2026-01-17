@@ -82,8 +82,8 @@ function getCanvasPosition(event) {
     const rect = canvas.getBoundingClientRect();
    if (event.touches && event.touches.length > 0) {
     return {
-        x: event.clientX - rect.left,
-        y: event.clientY - rect.top
+        x: event.touches[0].clientX - rect.left,
+        y: event.touches[0].clientY - rect.top
     };
 }
 return {
@@ -97,19 +97,20 @@ return {
            hasSignature = true;
            const pos = getCanvasPosition(event);
            ctx.beginPath();
-              ctx.moveTo(event.offsetX, event.offsetY); 
+              ctx.moveTo(pos.x, pos.y ); 
        }
               function draw(event) {
            if (!drawing) return; 
 
 event.preventDefault();
+const pos = getCanvasPosition(event);
                ctx.strokeStyle = tool === 'pen' ? 'black' : 'white';
                ctx.lineWidth = tool === 'pen' ? 2 : 5;
-               ctx.lineTo(event.offsetX, event.offsetY);
+               ctx.lineTo(pos.x, pos.y);
                ctx.stroke();
 
                ctx.beginPath();
-               ctx.moveTo(event.offsetX, event.offsetY);
+               ctx.moveTo(pos.x, pos.y);
            }
         
            function stopDrawing() {
