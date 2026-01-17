@@ -1,9 +1,10 @@
-//-----TEXT INPUT VALUES LOG TO CONSOLE-----//
 
-function setStatus(message, isError) {
-    const statusMessage = document.getElementById('statusMessage');
-    statusMessage.textContent = message;
-    statusMessage.style.color = isError ? 'red' : 'green';}
+//-----SIGNATURE PAD INITIAL SETTING-----//
+
+         let hasSignature = false;
+
+      
+  //-----TEXT INPUT VALUES AND LOG TO CONSOLE-----//
 
 document.getElementById('consent-form').addEventListener('submit', function(event) {
     event.preventDefault(); 
@@ -23,12 +24,21 @@ document.getElementById('consent-form').addEventListener('submit', function(even
     setStatus('Please fill in all required fields.', true);
     return;
 }
+ 
 
     //-----Warning Checkbox inputs-----//
 if (usageConsents.length === 0) {
     setStatus('Please select at least one usage consent option.', true);
+    return;}
+
+        //-----No signature error warning -----//
+    if (!hasSignature) {
+    setStatus('Please provide your digital signature.', true);
+    console.log('Has Signature:', hasSignature);
     return;
-}
+}  
+
+ //-----SUCCESS -----//
 setStatus('Form submitted successfully!', false);
 
 
@@ -37,7 +47,7 @@ setStatus('Form submitted successfully!', false);
     console.log('Phone Number:', phone);
     console.log('Special Instructions:', specialInstructions);
    console.log('Usage Consents:', usageConsents.join(', '));
-
+console.log('Has Signature:', hasSignature);
 
 });
 
@@ -60,7 +70,7 @@ document.getElementById('consent-form').addEventListener('reset', function() {
 
  //-----SignaturePad-----//
       // Based on tutorial from https://blog.logrocket.com/implementing-signature-pad-javascript/---///
-       const canvas = document.getElementById('SignaturePad');
+      const canvas = document.getElementById('SignaturePad');
        const ctx = canvas.getContext('2d');
        let drawing = false;
        let tool = 'pen';
@@ -70,6 +80,7 @@ document.getElementById('consent-form').addEventListener('reset', function() {
 
        function startDrawing(event) {
            drawing = true;
+           hasSignature = true;
            ctx.beginPath();
               ctx.moveTo(event.offsetX, event.offsetY); 
        }
@@ -101,7 +112,11 @@ document.getElementById('consent-form').addEventListener('reset', function() {
        canvas.addEventListener('touchend', stopDrawing);
               canvas.addEventListener('touchcancel', stopDrawing);
 
-            
-              document.getElementById('stroke-style').addEventListener('change', function(event) {
-       tool = event.target.value;
-    ctx.lineWidth = tool === 'pen' ? 2 : 5;    });
+      
+
+    //-----ERROR STATUS WARNING-----//
+
+function setStatus(message, isError) {
+    const statusMessage = document.getElementById('statusMessage');
+    statusMessage.textContent = message;
+    statusMessage.style.color = isError ? 'red' : 'green';}
