@@ -78,16 +78,31 @@ document.getElementById('consent-form').addEventListener('reset', function() {
        ctx.lineCap = 'round';
        ctx.lineWidth = 2;
 
+function getCanvasPosition(event) {
+    const rect = canvas.getBoundingClientRect();
+   if (event.touches && event.touches.length > 0) {
+    return {
+        x: event.clientX - rect.left,
+        y: event.clientY - rect.top
+    };
+}
+return {
+        x: event.offsetX,
+        y: event.offsetY
+    };
+}
+
        function startDrawing(event) {
            drawing = true;
            hasSignature = true;
+           const pos = getCanvasPosition(event);
            ctx.beginPath();
               ctx.moveTo(event.offsetX, event.offsetY); 
        }
               function draw(event) {
            if (!drawing) return; 
 
-
+event.preventDefault();
                ctx.strokeStyle = tool === 'pen' ? 'black' : 'white';
                ctx.lineWidth = tool === 'pen' ? 2 : 5;
                ctx.lineTo(event.offsetX, event.offsetY);
