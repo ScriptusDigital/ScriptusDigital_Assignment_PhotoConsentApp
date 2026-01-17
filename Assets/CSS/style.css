@@ -52,6 +52,8 @@ section {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
 }
+
+
    
 /*Text input areas */
 input {
@@ -99,3 +101,36 @@ h3 {
     margin-bottom: 10px;
     font-size: 1.1rem;
 }
+
+/*FOOTER */
+.site-footer {
+    background-color: #003366;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px;
+
+}
+.site-footer a {
+    color: #ffffff;
+    text-decoration: none;
+}       
+
+.site-footer a:hover {
+    text-decoration: underline;
+}   
+
+/*BUTTONS */
+
+button {
+padding: 10px 14px;
+border-radius: 6px;
+border: black 1px solid;
+cursor: pointer;
+font-weight: bold;
+transition:
+    background-color 0.s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;}
+
+
+

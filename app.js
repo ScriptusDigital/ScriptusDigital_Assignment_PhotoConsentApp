@@ -41,4 +41,6 @@ setStatus('Form submitted successfully!', false);
 
 });
 
-
+document.getElementById('consent-form').addEventListener('reset', function() {
+    setStatus('', false);
+});
