@@ -135,17 +135,15 @@ h3 {
 }
 
 button {
-
 padding: 10px 7px;
 border-radius: 6px;
 border: none;
 cursor: pointer;
 font-weight: bold;
-
-transition:
-    background-color 0.2s ease,
-    transform 0.2s ease,
-    box-shadow 0.2s ease;}
+font-size: 0.95rem;
+background-color: #003366;
+color: #ffffff
+}
 
 button[type="submit"] {
     background-color: #003366;
@@ -154,30 +152,26 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-    background-color: white;
-    color: #003366;
+    background-color: #004c99;
+    color: #ffffff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transform: translateY(-2px);
 }
-button[type="submit"]:active {
-    transform: translateY(1px);
 
-} 
+
 button[type="reset"] {
     background-color: #003366;
     color: white;
 }
 
 button[type="reset"]:hover {
-    background-color: white;
-    color: #003366;
+    background-color: #004c99;
+    color: #ffffff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transform: translateY(-2px);
 }
-button[type="reset"]:active {
-    transform: translateY(1px);
 
-} 
+
 
 
 /*Digital Signature Box */
