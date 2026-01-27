@@ -52,13 +52,7 @@ console.log('Has Signature:', hasSignature);
 
 });
 
-   //-----Form Reset-----//
 
-document.getElementById('consent-form').addEventListener('reset', function() {
-    setStatus('', false);
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    hasSignature = false;
-});
 
 
     //-----Character Counter in Special Instructions-----//
@@ -74,6 +68,16 @@ document.getElementById('consent-form').addEventListener('reset', function() {
       // Based on tutorial from https://blog.logrocket.com/implementing-signature-pad-javascript/---///
       const canvas = document.getElementById('SignaturePad');
        const ctx = canvas.getContext('2d');
+
+  //-----Form Reset-----//
+
+document.getElementById('consent-form').addEventListener('reset', function() {
+    setStatus('', false);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    hasSignature = false;
+});
+
+
        let drawing = false;
        let tool = 'pen';
 
@@ -95,16 +99,20 @@ return {
 }
 
        function startDrawing(event) {
+            event.preventDefault();   
            drawing = true;
-           hasSignature = true;
            const pos = getCanvasPosition(event);
            ctx.beginPath();
               ctx.moveTo(pos.x, pos.y ); 
        }
+
+
+
               function draw(event) {
            if (!drawing) return; 
 
 event.preventDefault();
+hasSignature = true;
 const pos = getCanvasPosition(event);
                ctx.strokeStyle = tool === 'pen' ? 'black' : 'white';
                ctx.lineWidth = tool === 'pen' ? 2 : 5;
@@ -125,8 +133,8 @@ const pos = getCanvasPosition(event);
        canvas.addEventListener('mouseup', stopDrawing);
        canvas.addEventListener('mouseout', stopDrawing);
 
-       canvas.addEventListener('touchstart', startDrawing);
-       canvas.addEventListener('touchmove', draw);
+       canvas.addEventListener('touchstart', startDrawing, {passive: false });
+       canvas.addEventListener('touchmove', draw, {passive: false  });
        canvas.addEventListener('touchend', stopDrawing);
               canvas.addEventListener('touchcancel', stopDrawing);
 
@@ -137,4 +145,5 @@ const pos = getCanvasPosition(event);
 function setStatus(message, isError) {
     const statusMessage = document.getElementById('statusMessage');
     statusMessage.textContent = message;
-    statusMessage.style.color = isError ? 'red' : 'green';}
+statusMessage.style.color = message === ''?'' : (isError ? 'red' : 'green');
+}

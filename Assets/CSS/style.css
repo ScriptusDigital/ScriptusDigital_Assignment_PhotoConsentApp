@@ -18,7 +18,7 @@ header {
 
  h1 {
     margin: 0 0 5px;
-    font-size: clamp(1.35rem, 2.3vw, 2.rem);
+    font-size: clamp(1.35rem, 2.3vw, 2rem);
 }
 
 
@@ -207,4 +207,9 @@ touch-action: none;
 
 /*Responsive elements */
 
-
+@media (max-width: 600px) {
+    section {
+        max-width: 95%;
+        padding: 15px;
+    }
+}
