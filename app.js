@@ -83,21 +83,20 @@ form.addEventListener('reset', function() {
        let tool = 'pen';
 
        ctx.lineCap = 'round';
+       ctx.lineJoin = 'round';
        ctx.lineWidth = 2;
 
 function getCanvasPosition(event) {
     const rect = canvas.getBoundingClientRect();
-   if (event.touches && event.touches.length > 0) {
+    const point = (event.touches && event.touches.length > 0) ? event.touches[0] : event;
+
     return {
-        x: event.touches[0].clientX - rect.left,
-        y: event.touches[0].clientY - rect.top
+        x: point.clientX - rect.left,
+        y: point.clientY - rect.top
     };
 }
-return {
-        x: event.offsetX,
-        y: event.offsetY
-    };
-}
+
+
 
 
        function startDrawing(event) {
