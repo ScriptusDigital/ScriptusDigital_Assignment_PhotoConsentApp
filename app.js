@@ -2,19 +2,17 @@
 //-----SIGNATURE PAD INITIAL SETTING-----//
 
          let hasSignature = false;
-
-      
+const form = document.getElementById('consent-form');
   //----- INPUT VALUES AND LOG TO CONSOLE-----//
 
-document.getElementById('consent-form').addEventListener('submit', function(event) {
+form.addEventListener('submit', function(event)
+{
     event.preventDefault(); 
 
     const name = document.getElementById('participant-name').value.trim();
     const email = document.getElementById('email').value.trim();
     const phone = document.getElementById('phone').value.trim();
     const specialInstructions = document.getElementById('special').value.trim();
-
-
       const usageConsents = [];
     document.querySelectorAll('.BoxInput:checked').forEach(checkbox => {
         usageConsents.push(checkbox.value);
@@ -41,7 +39,9 @@ if (usageConsents.length === 0) {
 
  //-----SUCCESS AND LOG -----//
 setStatus('Form submitted successfully!', false);
-
+setTimeout(() => 
+    {form.reset(); 
+}, 900);
 
     console.log('Partcipant Name:', name);
     console.log('Email:', email);
@@ -71,10 +71,11 @@ console.log('Has Signature:', hasSignature);
 
   //-----Form Reset-----//
 
-document.getElementById('consent-form').addEventListener('reset', function() {
-    setStatus('', false);
+form.addEventListener('reset', function() {
+  setStatus('', false);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     hasSignature = false;
+    specialCount.textContent = '0 characters';
 });
 
 
@@ -97,6 +98,7 @@ return {
         y: event.offsetY
     };
 }
+
 
        function startDrawing(event) {
             event.preventDefault();   
@@ -147,3 +149,4 @@ function setStatus(message, isError) {
     statusMessage.textContent = message;
 statusMessage.style.color = message === ''?'' : (isError ? 'red' : 'green');
 }
+
