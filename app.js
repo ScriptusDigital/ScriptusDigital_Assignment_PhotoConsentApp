@@ -4,7 +4,7 @@
          let hasSignature = false;
 
       
-  //-----TEXT INPUT VALUES AND LOG TO CONSOLE-----//
+  //----- INPUT VALUES AND LOG TO CONSOLE-----//
 
 document.getElementById('consent-form').addEventListener('submit', function(event) {
     event.preventDefault(); 
@@ -19,7 +19,8 @@ document.getElementById('consent-form').addEventListener('submit', function(even
     document.querySelectorAll('.BoxInput:checked').forEach(checkbox => {
         usageConsents.push(checkbox.value);
     });
-      //-----Warning Required inputs -----//
+
+      //-----Warning For Required inputs -----//
       if (name === '' || email === '') {
     setStatus('Please fill in all required fields.', true);
     return;
@@ -38,7 +39,7 @@ if (usageConsents.length === 0) {
     return;
 }  
 
- //-----SUCCESS -----//
+ //-----SUCCESS AND LOG -----//
 setStatus('Form submitted successfully!', false);
 
 
