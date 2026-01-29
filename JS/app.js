@@ -27,6 +27,7 @@ form.addEventListener('submit', function(event)
  
 
     //-----Warning Checkbox inputs-----//
+    
 if (usageConsents.length === 0) {
     setStatus('Please select at least one usage consent option.', true);
     return;}
