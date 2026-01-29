@@ -1,4 +1,5 @@
 
+/* jshint esversion: 6 */
 //-----SIGNATURE PAD INITIAL SETTING-----//
 
          let hasSignature = false;
@@ -81,7 +82,6 @@ form.addEventListener('reset', function() {
 
        let drawing = false;
        let tool = 'pen';
-
        ctx.lineCap = 'round';
        ctx.lineJoin = 'round';
        ctx.lineWidth = 2;
