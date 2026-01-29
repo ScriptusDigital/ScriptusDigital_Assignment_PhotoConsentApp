@@ -21,6 +21,12 @@ header {
     font-size: clamp(1.35rem, 2.3vw, 2rem);
 }
 
+ h2 {
+    margin-top: 5px;
+    font-size: clamp(1.35rem, 2.3vw, 2rem);
+}
+
+
 
 
 /*Header Menu */
@@ -50,16 +56,22 @@ text-align: center;
 
 
 nav a:hover {
-
 filter: brightness(0.90);}
 
 /*Consent Form Setup */
 
 label {
     display: block;
-    margin: 12px 0;
+    margin: 12px;
     font-weight: 600;
 }
+
+label:has(#special) {
+    margin-bottom: 1px;
+}
+
+
+
 
 section {
     background-color: white;
@@ -103,8 +115,10 @@ input:focus, textarea:focus {
 #specialcount {
     font-size: 0.9rem;
     color: #555555;
-    margin-top: 0%;
+    margin-top: 0;
 }
+
+
 
 /*CHECKBOXES SECTION */
 
@@ -208,7 +222,219 @@ touch-action: none;
 
 /*Responsive elements */
 
-@media (max-width: 600px) {
+/*Main page achitecture */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f4f4f4;
+line-height: 1.3;
+}
+
+/*Header */
+header {
+    background-color: #003366;
+    color: #ffffff;
+    padding: 16px;
+    text-align: center;
+    padding: clamp(16px, 2.5vw, 28px) 16px;
+}
+
+ h1 {
+    margin: 0 0 5px;
+    font-size: clamp(1.35rem, 2.3vw, 2rem);
+}
+
+
+
+/*Header Menu */
+nav {display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px 20px;    
+    border-top: 1px solid #ffffff40;
+margin-top: clamp(6px, 1vw, 10px);
+    padding-top: clamp(15px, 1.2vw, 14px);
+    line-height: 1;
+
+}
+
+
+nav a {
+    color: #003366;
+    background-color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px 10px;
+    border-radius: 100px;
+width: clamp(120px, 22vw, 180px);
+text-align: center;
+
+}
+
+
+nav a:hover {
+
+filter: brightness(0.90);}
+
+/*Consent Form Setup */
+
+label {
+    display: block;
+    margin: 12px 0;
+    font-weight: 600;
+}
+
+section {
+    background-color: white;
+    padding: 20px;
+
+    margin: 20px auto;
+    max-width: 75%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+
+   
+/*Text input areas */
+input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 6px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font:inherit
+}
+textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    margin-top: 7px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+      font:inherit
+}
+
+input:focus, textarea:focus {
+    border-color: #66afe9;
+    outline: none;
+    box-shadow: 0 0 8px rgba(102, 175, 233, 0.6);
+}
+
+#specialcount {
+    font-size: 0.9rem;
+    color: #555555;
+    margin-top: 0;
+}
+
+
+
+/*CHECKBOXES SECTION */
+
+.check {
+  font-weight: normal;          
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 8px 0 0;
+}
+.check input {
+  width: auto;
+  margin: 0;
+}
+
+h3 {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+/*FOOTER */
+.site-footer {
+    background-color: #003366;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px;
+
+}
+.site-footer a {
+    color: #ffffff;
+    text-decoration: none;
+}       
+
+.site-footer a:hover {
+    text-decoration: underline;
+}   
+
+/*BUTTONS */
+
+.buttongroup {
+    display: flex;
+    gap: 10px  ;
+
+    margin-top: 20px;
+}
+
+button {
+
+padding: 10px 7px;
+border-radius: 6px;
+border: none;
+cursor: pointer;
+font-weight: bold;
+font-size: 0.95rem;
+background-color: #003366;
+color: #ffffff
+}
+
+button[type="submit"] {
+    background-color: #003366;
+    color: white;
+
+}
+
+button[type="submit"]:hover {
+    background-color: #004c99;
+    color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+
+button[type="reset"] {
+    background-color: #003366;
+    color: white;
+}
+
+button[type="reset"]:hover {
+    background-color: #004c99;
+    color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+
+
+
+/*Digital Signature Box */
+/* Canvas */
+#SignaturePad {
+display: block;
+width: 100% ;   
+max-width: 400px;
+height: 150px;
+border: 1px solid #ccc;
+border-radius: 6px;
+background: #f9f9f9;
+margin-top: 10px;
+touch-action: none;
+}
+
+/*Responsive elements */
+
+@media (max-width: 385px) {
     section {
         max-width: 95%;
         padding: 15px;

@@ -1,9 +1,11 @@
 
 /* jshint esversion: 6 */
+
 //-----SIGNATURE PAD INITIAL SETTING-----//
 
          let hasSignature = false;
 const form = document.getElementById('consent-form');
+
   //----- INPUT VALUES AND LOG TO CONSOLE-----//
 
 form.addEventListener('submit', function(event)
@@ -27,7 +29,7 @@ form.addEventListener('submit', function(event)
  
 
     //-----Warning Checkbox inputs-----//
-    
+
 if (usageConsents.length === 0) {
     setStatus('Please select at least one usage consent option.', true);
     return;}
@@ -56,7 +58,6 @@ console.log('Has Signature:', hasSignature);
 
 
 
-
     //-----Character Counter in Special Instructions-----//
     const specialCount = document.getElementById('specialcount');
     const specialInstructionsInput = document.getElementById('special');
@@ -67,6 +68,7 @@ console.log('Has Signature:', hasSignature);
     });
 
  //-----SignaturePad-----//
+
       // Based on tutorial from https://blog.logrocket.com/implementing-signature-pad-javascript/---///
       const canvas = document.getElementById('SignaturePad');
        const ctx = canvas.getContext('2d');
@@ -96,8 +98,6 @@ function getCanvasPosition(event) {
         y: point.clientY - rect.top
     };
 }
-
-
 
 
        function startDrawing(event) {
@@ -134,7 +134,6 @@ const pos = getCanvasPosition(event);
        canvas.addEventListener('mousemove', draw);
        canvas.addEventListener('mouseup', stopDrawing);
        canvas.addEventListener('mouseout', stopDrawing);
-
        canvas.addEventListener('touchstart', startDrawing, {passive: false });
        canvas.addEventListener('touchmove', draw, {passive: false  });
        canvas.addEventListener('touchend', stopDrawing);
